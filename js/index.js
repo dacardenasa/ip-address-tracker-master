@@ -1,6 +1,6 @@
 const map = L.map('map', {
-  center: [51.505, -0.09],
-  zoom: 16
+  center: [41.4780, -0.09],
+  zoom: 11
 });
 	
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -10,4 +10,5 @@ maxZoom: 18
 
 L.control.scale().addTo(map);
 
-L.marker([41.66, -4.71],{draggable: true}).addTo(map);
+var marker = L.marker([  41.4780103, 2.3043663 ],{draggable: true}).addTo(map);  
+marker.bindPopup("Aqui estan nuestras oficinas").openPopup();
