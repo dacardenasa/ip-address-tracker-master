@@ -149,7 +149,7 @@ header {
   .box-search {
     width: 90%;
   }
-  
+
 }
 
 @media (max-width: 458px) {
@@ -160,6 +160,15 @@ header {
 
   .box-information {
     bottom: -130%;
+  }
+
+}
+
+@media (max-width: 411px) {
+
+  .box-information {
+    width: 70%;
+    left: 15%;
   }
 
 }
