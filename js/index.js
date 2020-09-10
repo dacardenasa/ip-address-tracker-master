@@ -1,14 +1,60 @@
-const map = L.map('map', {
-  center: [41.4780, -0.09],
-  zoom: 11
+import { getMap } from "./map.js";
+import { getIp } from "./getIp.js";
+
+(async function(){
+  try {
+    const data = await getIp();
+    $.ajax({
+      method: "GET",
+      url:
+        "https://geo.ipify.org/api/v1?apiKey=at_v9esYDBygHGaFR0BiEXUE9rS4LuuM&ipAddress=" + data.ip,
+      dataType: "json",
+    })
+      .done(function (response) {
+        const { lat, lng, region, city, postalCode, timezone } = response.location;
+        const { isp } = response;
+        getMap(lat, lng);
+        $("#address-data").text(data.ip);
+        $("#location-data").text(`${region}, ${city}, ${postalCode}`);
+        $("#zone-data").text("UTC" + timezone);
+        $("#isp-data").text(isp);
+      })
+      .fail(function (error) {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+  }
+}());
+
+$("#btn-search").on("click", function(){
+  const ip = $("#ip-address").val();
+
+  $.ajax({
+    method: "GET",
+    url:
+      "https://geo.ipify.org/api/v1?apiKey=at_v9esYDBygHGaFR0BiEXUE9rS4LuuM&ipAddress=" + ip,
+    dataType: "json",
+  })
+    .done(function (response) {
+      const { lat, lng, region, city, postalCode, timezone } = response.location;
+      const { isp } = response;
+      console.log(response);
+      map.remove();
+      $("#main-container").append("<div id='map' style='height: 70vh; z-index: 0;'></div>");
+      getMap(lat, lng);
+      $("#address-data").text(ip);
+      $("#location-data").text(`${region}, ${city}, ${postalCode}`);
+      $("#zone-data").text("UTC" + timezone);
+      $("#isp-data").text(isp);
+    })
+    .fail(function (error) {
+      console.log(error);
+    });
+
 });
-	
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-maxZoom: 18
-}).addTo(map);
 
-L.control.scale().addTo(map);
 
-var marker = L.marker([  41.4780103, 2.3043663 ],{draggable: true}).addTo(map);  
-marker.bindPopup("Aqui estan nuestras oficinas").openPopup();
+
+
+
