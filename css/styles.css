@@ -126,7 +126,7 @@ header {
   .box-information {
     flex-direction: column;
     height: auto;
-    bottom: -120%;
+    bottom: -140%;
     width: 50%;
     left: 25%;
   }
@@ -150,16 +150,28 @@ header {
     width: 90%;
   }
 
+  .box-information {
+    bottom: -150%;
+  }
+
 }
 
-@media (max-width: 458px) {
+@media (max-width: 562px) {
+
+  .box-information {
+    bottom: -170%;
+  }
+
+}
+
+@media (max-width: 491px) {
 
   .box-search {
     width: 95%;
   }
 
   .box-information {
-    bottom: -130%;
+    bottom: -190%;
   }
 
 }
