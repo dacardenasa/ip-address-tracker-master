@@ -1,6 +1,6 @@
 "use strict";
 
-export const getMap = (lat = 41.4780103, long = 2.3043663) => {
+export const getMap = (lat, long, isp) => {
   const map = L.map("map", {
     center: [lat, long],
     zoom: 11,
@@ -17,5 +17,5 @@ export const getMap = (lat = 41.4780103, long = 2.3043663) => {
   var marker = L.marker([lat, long], { draggable: true }).addTo(
     map
   );
-  marker.bindPopup("Aqui estan nuestras oficinas").openPopup();
+  marker.bindPopup(`${isp}`).openPopup();
 };

@@ -117,6 +117,10 @@ header {
   z-index: 0;
 }
 
+.show-error {
+  border: 1px solid red !important;
+}
+
 @media (max-width: 768px) {
 
   .box-search {
@@ -159,6 +163,18 @@ header {
 @media (max-width: 562px) {
 
   .box-information {
+    bottom: -160%;
+  }
+
+}
+
+@media (max-width: 523px) {
+
+  .box-search {
+    width: 95%;
+  }
+
+  .box-information {
     bottom: -170%;
   }
 
@@ -166,21 +182,10 @@ header {
 
 @media (max-width: 491px) {
 
-  .box-search {
-    width: 95%;
-  }
-
-  .box-information {
-    bottom: -190%;
-  }
-
-}
-
-@media (max-width: 411px) {
-
   .box-information {
     width: 70%;
     left: 15%;
+    bottom: -150%;
   }
 
 }
