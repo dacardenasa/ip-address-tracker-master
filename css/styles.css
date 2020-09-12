@@ -189,3 +189,13 @@ header {
   }
 
 }
+
+@media (max-width: 352px) {
+
+  .box-information {
+    width: 70%;
+    left: 15%;
+    bottom: -170%;
+  }
+
+}
